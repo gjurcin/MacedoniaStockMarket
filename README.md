@@ -30,11 +30,11 @@ The project is done in few phases:
 
 ## Data Cleaning
 
-<p>There is missing dates because the stock market is functioanl only on working days during the week. Moreover some stocks are not traded every day. So we decided to make a series with all missing dates and complite daily prices for all stocks. We used pandas library and MultiIndex method to fulfil the series by stocks.
+<p>There are missing values in date series because the stock market is functioanl only on working days during the week. Moreover some stocks are not traded every day. So we decided to make a series with all missing values as sequence in dates and complite daily prices for all stocks. We used pandas library and MultiIndex method to fulfil the series by stocks. Empthy prices of open,	high,	low,	average,	close,	volume and	quantity was fulfilled according to logic that close price will be the same as last traded day but also open, high, low and average because there is no fluctuation. Volume and quantity will be equal to zero.
 </p>
 
 <p align="center"><a href="https://github.com/RistovaIvona/BankClassification/commit/93473b465c17e2a4f55da114d3331e901aa02d23">
-<img width="75%" height="75%" src="https://github.com/RistovaIvona/BankClassification/blob/master/documentation/missing.png"></a></p>
+<img width="75%" height="75%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/time_series_plot.png"></a></p>
 
 ## Features Analysis
 
