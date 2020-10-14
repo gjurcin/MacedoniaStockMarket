@@ -21,7 +21,7 @@ The aim of the project is to build a model which will predict the future price.
 The project is done in few phases:
 
 - [Data Cleaning](#data-cleaning)
-- [Features Analysis](#features-analysis)
+- [Feature Engineering](#feature-engineering)
 - [Models implementation](#models-implementation)
 - [Conclusion](#conclusion)
 
@@ -36,7 +36,14 @@ After cleansing and filling data we can visual time series with all different st
 
 <img width="75%" height="75%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/time_series_plot.png"></a></p>
 
-## Features Analysis
+<p>Other very important statistical indicatior is that only few of the stocks close price has lots of outliers and rest of them has normal increment during the period. We can check the statement on the box plot analysis below
+<img width="75%" height="75%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/outliers_by_stock.png"></a></p>
+
+<p>On the end we finished with 12 features of which last column start_date give us information about first date of trading with the initial stock.
+<img width="75%" height="75%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/sample.png"></a></p>
+
+
+## Feature Engineering
 
 <p align="center"><a href="https://github.com/RistovaIvona/BankClassification/commit/fc01a98eaac76965e19f3df831610e07a148a7b3">
 <img width="40%" height="40%" src="https://github.com/RistovaIvona/BankClassification/blob/master/documentation/data%20dist.png"></a></p>
