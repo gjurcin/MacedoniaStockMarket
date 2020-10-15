@@ -1,0 +1,16 @@
+n_future_days = 5
+buy_threshold=1.02
+sell_threshold=0.98
+y_ratio = y_test[:-n_future_days]/y_test[n_future_days:]
+y_classes=[]
+for y in y_ratio:
+	if y>buy_treshold:
+		decision='buy' 
+	elif y<sell_threshold:
+		decision='sell':
+	else:
+		decision='sell' 
+	y_classes.append(decision)
+
+
+
