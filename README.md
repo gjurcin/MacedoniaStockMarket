@@ -58,12 +58,10 @@ On the end we finished with 12 features of which last column start_date give us 
 
 # Rolling windows
 
-<p>One of the most important proccess that we done is creating features with time lags or adding some explanation features to target value such as mean of the lasy 7 days of the close price.</p>
+<p>One of the most important proccess that we done is creating features with time lags or adding some explanation features to target value such as mean of the lasy 7 days of the close price. Before all we set the Date column as index. Moreover in the rolling windows process we added 31 explainable features. Though, on the sample of exploring for one of the stocks we found lots of insights, which feature explain the most of the model. On the image bellow you can check the order.</p>
 
 <p align="center">
- <a href="https://github.com/RistovaIvona/BankClassification/commit/fc01a98eaac76965e19f3df831610e07a148a7b3"><img width="30%" height="30%" src="https://github.com/RistovaIvona/Bank-Marketing/blob/master/documentation/marital.png"></a>
- <a href="https://github.com/RistovaIvona/BankClassification/commit/fc01a98eaac76965e19f3df831610e07a148a7b3"><img width="28%" height="28%" src="https://github.com/RistovaIvona/Bank-Marketing/blob/master/documentation/education.png"></a>
- <a href="https://github.com/RistovaIvona/BankClassification/commit/fc01a98eaac76965e19f3df831610e07a148a7b3"><img width="30%" height="30%" src="https://github.com/RistovaIvona/Bank-Marketing/blob/master/documentation/housing.png"></a>
+ <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/feature_importans.PNG"><img width="30%" height="30%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/feature_importans.PNG"></a>
 </p>
 
 <p>These categorial fueatures (marital status, education and housing) have not impact on subscription rate. Exception from this conclusion is the feature education, because the subscription rate of the illiterate shows higher rate of subscription. This is expected because this group does not have knowledge for better and sophisticated kinds of investment.<p>
