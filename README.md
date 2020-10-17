@@ -56,7 +56,7 @@ On the end we finished with 12 features of which last column start_date give us 
 
 <img width="75%" height="40%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/date_fe.PNG"></a></p>
 
-### Rolling windows
+<h3>### Rolling windows</h3>
 
 <p>One of the most important proccess that we done is creating features with time lags or adding some explanation features to target value such as mean of the lasy 7 days of the close price. Before all we set the Date column as index. Moreover in the rolling windows process we added 31 explainable features. Though, on the sample of exploring for one of the stocks we found lots of insights, which feature explain the most of the model. On the image bellow you can check the order. Most of the rolling windows are made on prices open, average and close but also ratios to explain growth by time.</p>
 
@@ -66,16 +66,20 @@ On the end we finished with 12 features of which last column start_date give us 
 
 ## Models implementation
 
-### using regressors
+<h3>### using regressors</h3>
 
 <p>In order to be able to discuss the models and their loss first must be completed, the data processing, reprocessing, cleaning and data analysis. To make better results we compare some techniques and here we present the best of them.
 Before we build and train models we make feature engineering task and split the data into train and test but also we shift the label column by 7 days so we can find the price after 7 days. Label column will be close price.
 
-In the test phase we used two ensamble regreossor. Fisrt one was Ransdom Forest and the second one was XGBoost. Before using them for different stocks also we made some grid search algorithms to find best hyperparametars. This tuning helped us to create surly prcise models. We will show the results for 4 different stocks.</p>
+We used two ensamble regreossor and one RNN model with LSTM. If we talking about regoressors, fisrt one was Ransdom Forest and the second one was XGBoost. Before using them for different stocks also we made some grid search algorithms to find best hyperparametars. This tuning helped us to create surly prcise models beacuse we already create validation and test set from sample. Most important thing to mention here is creating new features to use labeled data with more than 50 features. We will show the results for 4 different stocks. </p>
 
 ### Alkaloid (ALK)
 
-<p></p>
+<p>After spliting the dataset by each stock, and also split on training and validation set we calculate the loss by root mean squared error. On training set we get RMSE with 6.9 and RMSE on validation set with 38.79. Other parametar that we mesure was coefficient of determination and on train we get 0.99 but on validation we get 0.89. It is obvious that when you predicting price with lots of uncertainty there will be some difference between traning and validation mesures</p>
+
+<p align="center">
+ <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/alkaloid_regoressor.PNG"><img width="70%" height="70%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/alkaloid_regoressor.PNG"></a>
+</p>
 
 ### Granit (GRNT)
 
@@ -89,7 +93,7 @@ In the test phase we used two ensamble regreossor. Fisrt one was Ransdom Forest 
 
 <p></p>
 
-### using RNN with LSTM
+<h3>### using RNN with LSTM</h3>
 
 ## Conclusions and recommendations
 
