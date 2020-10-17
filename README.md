@@ -56,75 +56,42 @@ On the end we finished with 12 features of which last column start_date give us 
 
 <img width="75%" height="40%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/date_fe.PNG"></a></p>
 
-# Rolling windows
+### Rolling windows
 
-<p>One of the most important proccess that we done is creating features with time lags or adding some explanation features to target value such as mean of the lasy 7 days of the close price. Before all we set the Date column as index. Moreover in the rolling windows process we added 31 explainable features. Though, on the sample of exploring for one of the stocks we found lots of insights, which feature explain the most of the model. On the image bellow you can check the order.</p>
+<p>One of the most important proccess that we done is creating features with time lags or adding some explanation features to target value such as mean of the lasy 7 days of the close price. Before all we set the Date column as index. Moreover in the rolling windows process we added 31 explainable features. Though, on the sample of exploring for one of the stocks we found lots of insights, which feature explain the most of the model. On the image bellow you can check the order. Most of the rolling windows are made on prices open, average and close but also ratios to explain growth by time.</p>
 
 <p align="center">
- <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/feature_importans.PNG"><img width="30%" height="30%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/feature_importans.PNG"></a>
+ <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/feature_importans.PNG"><img width="70%" height="70%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/feature_importans.PNG"></a>
 </p>
 
-<p>These categorial fueatures (marital status, education and housing) have not impact on subscription rate. Exception from this conclusion is the feature education, because the subscription rate of the illiterate shows higher rate of subscription. This is expected because this group does not have knowledge for better and sophisticated kinds of investment.<p>
+## Models implementation
 
-<p align="center"><a href="https://github.com/RistovaIvona/BankClassification/commit/fc01a98eaac76965e19f3df831610e07a148a7b3"><img width="60%" height="60%" src="https://github.com/RistovaIvona/BankClassification/blob/master/documentation/sub%20by%20month.png"></a>
+### using regressors
 
-<p>The bank’s contact rate and clients’ response rate in each month have diffrent directions. This can be interpret on two ways. Either the bank starts to contact the clients when the demand of deposits starts to decrease or that the bank has bad timing for contacting. The contact rate is the highest in may and august and on other hand, the highest subscription rate occured in march, september and october</p> 
+<p>In order to be able to discuss the models and their loss first must be completed, the data processing, reprocessing, cleaning and data analysis. To make better results we compare some techniques and here we present the best of them.
+Before we build and train models we make feature engineering task and split the data into train and test but also we shift the label column by 7 days so we can find the price after 7 days. Label column will be close price.
 
-<p>For more :<q>Build a future where people live in harmony with nature.</q></p>
+In the test phase we used two ensamble regreossor. Fisrt one was Ransdom Forest and the second one was XGBoost. Before using them for different stocks also we made some grid search algorithms to find best hyperparametars. This tuning helped us to create surly prcise models. We will show the results for 4 different stocks.</p>
 
-<p align="center"><a href="https://github.com/RistovaIvona/BankClassification/commit/0582900d7e5cf230ac071cd8c1107a9a8b060483"><img width="60%" height="60%" src="https://github.com/RistovaIvona/BankClassification/blob/master/documentation/heatmap.png"></a>
+### Alkaloid (ALK)
 
-<p>From the above heatmap we can see that there are some numerical features which share a high correlation between them, e.g nr.employed and euribor3m these features share a correlation value of 0.95, and euribor3m and emp.var.rate share a correlation of 0.97, which is very high compared to the other features that we see in the heatmap.
+<p></p>
 
-:star: For more visualization and relationships between the features read our file  <a href="https://github.com/RistovaIvona/BankClassification/blob/master/DataVisualization.ipynb"><b>"Data Visualization".</b></a>
+### Granit (GRNT)
 
-## Models implementation 
+<p></p>
 
-<p>In order to be able to discuss the models and their accuracy first must be completed, the data processing, reprocessing, cleaning and data analysis. 
-To make better results we compare some techniques and here we present the best of them.
-Before we build and train models we make feature engineering task and split the data into train and test.
- 
-One very common step in any feature engineering task is converting categorical features into numerical. This is called encoding and although there are several encoding techniques, there’s one in particular that we use here — mean encoding. 
-Unlike label encoding, which gets the work done efficiently but in a random way, mean encoding tries to approach the problem more logically. In a nutshell, it uses the target variable as the basis to generate the new encoded feature. So, this is the first part that we want to present something different from basic encoding, and we get better results.
+### Komercijalna Banka (KMB)
 
-The problem with this dataset is that we have imbalanced classification problem and we can not use simple split to dataset. The challenge of working with imbalanced datasets is that most machine learning techniques will ignore, and in turn have poor performance on, the minority class, although typically it is performance on the minority class that is most important. One way to solve this problem is to oversample the examples in the minority class. This can be achieved by simply duplicating examples from the minority class in the training dataset prior to fitting a model. This can balance the class distribution but does not provide any additional information to the model. The most widely used approach to synthesizing new examples is called the Synthetic Minority Oversampling Technique, or SMOTE for short. This technique is used in our dataset too and with its usage the results are better.  
+<p></p>
 
-Several models are defined and in the next picture, so we can see the progress and improvement of the accuracy of the models.</p>
+### Makpetrol (MPT)
 
-<p align="center"><a href="https://github.com/RistovaIvona/BankClassification/commit/fc01a98eaac76965e19f3df831610e07a148a7b3"><img width="40%" height="40%" src="https://github.com/RistovaIvona/BankClassification/blob/master/documentation/models.png"></a></p>
- 
-<p>From what has been shown,<b>it is clear that Gradient Boosting and XGBoost give the best results.</b> For example, XGBoost derived from chain of tree based models and has it roots in the very first Decision Tree Model. Each model had improvements over the previous one, making XGBoost and Gradient Boost most advanced and sophisticated models so far.</p>
+<p></p>
 
-<p align="center"><a href="https://github.com/RistovaIvona/BankClassification/commit/fc01a98eaac76965e19f3df831610e07a148a7b3"><img width="50%" height="50%" src="https://github.com/RistovaIvona/BankClassification/blob/master/documentation/roc.png"></a>
+### using RNN with LSTM
 
-<p>Both models have some predefined parameters and using them is not always best practice.
-In our case the models with parameter adjustment give some slight improvement less than 0.2. Therefore, models with predefined parameters are used so that a trade-off can be made because the time spent on setup does not give us any significant improvements.</p>
-
-</p>XGBoost gives us the best results but beside that there is always a way to get better results. Maybe we need more data or we need to modify what we have. The data science process never ends. In the picture below we present the final classification report from the selected best model. </p>
-
-<p align="center"><a href="https://github.com/RistovaIvona/BankClassification/commit/000a3f1e33a793d9aca8660065f7c13883d67910">
-<img width="40%" height="40%" src="https://github.com/RistovaIvona/BankClassification/blob/master/documentation/classification_report.PNG"></a></p>
-
-:star: To see all the models that we have tried please read our file <a href="https://github.com/RistovaIvona/BankClassification/blob/master/Models.ipynb"><b>"Models"</b></a>.
-
-## Conclusions and recommendations for future research
-
-<p>
-First when you get the datase, it is really important to read and investigate different kind of  papers with marketing analysis. These are links of papers that we have read and helped us: 
- <ul>
-   <li><a href="http://media.salford-systems.com/video/tutorial/2015/targeted_marketing.pdf">http://media.salfordsystems.com/video/tutorial/2015/targeted_marketing.pdf</a></li>
-   <li><a href="https://pdfs.semanticscholar.org/1999/417377ec21ecf7f7f55af62975065f785fb2.pdf">https://pdfs.semanticscholar.org/1999/417377ec21ecf7f7f55af62975065f785fb2.pdf</a></li>
-   <li><a href="http://archive.ics.uci.edu/ml/datasets/Bank+Marketing#">http://archive.ics.uci.edu/ml/datasets/Bank+Marketing#</a></li>
-   <li><a href="https://github.com/yfsui/Bank-Telemarketing-ML-Project/blob/master/Portuguese%20Bank%20Telemarketing%20Analysis.ipynb"></a>https://github.com/yfsui/Bank-Telemarketing-ML-Project/blob/master/Portuguese%20Bank%20Telemarketing%20Analysis.ipynb</li>
-   <li><a href="https://github.com/naveen-chauhan/Loan-Prediction-Classification/blob/master/Loan%2BPrediction.ipynb">https://github.com/naveen-chauhan/Loan-Prediction-Classification/blob/master/Loan%2BPrediction.ipynb</a></li>
- </ul>
-
-Second, when you will load the data you need to understand each attribute meaning. The meaning of the feature is essential to have view how the feature impact on the data and what you can expect.
-Third, clean data. We decided to replace the 'unknown' data. There are so many preprocess ways to clean and it is your way  to decide what you will do, but you have to be sure that the data are good enough for modeling. For this data set preprocessing and feature understanding is the most important step.
-And last, try diffrent kind of models and compare the results and time.
- 
-As George E. P. Box said: “all models are wrong, but some are useful”.
-</p>
+## Conclusions and recommendations
 
   
 </body>
