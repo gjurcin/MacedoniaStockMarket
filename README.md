@@ -81,6 +81,8 @@ We used two ensamble regreossor and one RNN model with LSTM. If we talking about
  <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/alkaloid_regoressor.PNG"><img width="70%" height="70%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/alkaloid_regoressor.PNG"></a>
 </p>
 
+<p>In this case when we compare on training and validation we can conclude that XGBosst give us better results than Randrom Forest. Forcast for 7th day or on 2020-09-01 with Random Forest is 11994.0 and with XGBoost is 11869.0. After a while the real price was 12200.0 so Random Forest get better predition with 206 MKD difference less than actual.</p>
+
 ### Granit (GRNT)
 
 <p></p>
