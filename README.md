@@ -51,20 +51,10 @@ On the end we finished with 12 features of which last column start_date give us 
 
 ## Feature Engineering
 
-<p align="center"><a href="https://github.com/RistovaIvona/BankClassification/commit/fc01a98eaac76965e19f3df831610e07a148a7b3">
-<img width="40%" height="40%" src="https://github.com/RistovaIvona/BankClassification/blob/master/documentation/data%20dist.png"></a></p>
+<p>Right of the bat, time-series daata is not yout average dataset. In all other datasets, the common thing is that all features, in general, are independent of each other. What sets time-series apart from regular, there is some inherent ordering to the data.</p>
+<p>After loading the preprocessd dataset, we started to extract all possible feature from Timestamp column. Date column is already converted to datetime64[ns] type. Though, within extraction we found 14 new features. On the image bellow you can check the code of extraction.</p>
 
-<p> Dataset has unbalanced standard distribution ("Yes" - 12% and "No" - 88%). </p>
-
-<p align="center">
-<a href="https://github.com/RistovaIvona/BankClassification/commit/fc01a98eaac76965e19f3df831610e07a148a7b3"><img width="45%" height="45%" src="https://github.com/RistovaIvona/BankClassification/blob/master/documentation/pdf%20of%20age.png"></a>
-<img width="45%" height="45%" src="https://github.com/RistovaIvona/BankClassification/blob/master/documentation/sub%20vs%20contact%20rate.png"></a>
-</p>
- 
-<p>The majority of the costumers belong into group from 30 to 40 years. Considering the distribution of the class and the age-variable, we divided the customer in the different age-groups in order to make better analysis how age influance on the subscription rate. 
-The bank was more effective with 20s and 60s aged group, which should be the next target. Considering that the term deposits are the most liquid and the most secure investment, the pattern is expected.The oldest aged group want to have cash and youngest do not have experience, knowledge and enough money for better and more sophisticated investments. On other hand, the 30s aged group have more loans and less money for savings.</p>
-
-<p align="center"><a href="https://github.com/RistovaIvona/BankClassification/commit/fc01a98eaac76965e19f3df831610e07a148a7b3"><img width="45%" height="45%" src="https://github.com/RistovaIvona/BankClassification/blob/master/documentation/duration.png"></a></p>
+<img width="75%" height="75%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/date_fe.PNG"></a></p>
 
 <p> Also the "duration" (last contact duration) can be useful feature for predicting the target variable. It is expected because it is already mentioned in the data overview that this field highely affects the target variable and should only be used for benchmark purposes.</p>
 
