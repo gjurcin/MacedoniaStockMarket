@@ -138,7 +138,7 @@ model_many_to_many.compile(optimizer='adam', loss='mse')
 <p>Other mesure that we add was test set and how much loss we get. RMSE on 7th day for ALK was 233.69 MKD or on the image bellow we can check sequence of 7 days with actual and predicted prices on test set.</p>
 
 <p align="center">
- <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/alk_rnn_actual_predicted.png"><img width="70%" height="70%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/alk_rnn_actual_predicted.png"></a>
+ <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/alk_rnn_actual_predicted.png"><img width="30%" height="30%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/alk_rnn_actual_predicted.png"></a>
 </p>
 
 ### Graint (GRNT)
