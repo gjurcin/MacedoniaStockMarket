@@ -54,7 +54,7 @@ On the end we finished with 12 features of which last column start_date give us 
 <p>Right of the bat, time-series daata is not yout average dataset. In all other datasets, the common thing is that all features, in general, are independent of each other. What sets time-series apart from regular, there is some inherent ordering to the data.</p>
 <p>After loading the preprocessd dataset, we started to extract all possible feature from Timestamp column. Date column is already converted to datetime64[ns] type. Though, within extraction we found 14 new features. On the image bellow you can check the code of extraction.</p>
 
-<img width="75%" height="40%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/date_fe.PNG"></a></p>
+<img width="50%" height="50%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/date_fe.PNG"></a></p>
 
 <h3>### Rolling windows</h3>
 
@@ -115,6 +115,37 @@ We used two ensamble regreossor and one RNN model with LSTM. If we talking about
 <p>In this case when we compare on training and validation we can conclude that Random Forest give us better results than XGBoost. Forcast for 7th day or on 2020-09-01 with Random Forest is 64382.0 and with XGBoost is 64705.0. After a while the real price was 62500.0 so Random Forest get better predition with 2205.0 MKD grater than actual.</p>
 
 <h3>using RNN with LSTM</h3>
+
+<p>Another algorithm that we used was RNN many to many model with LSTM. On the input we lookback with 180 days and on the output we create 7 days sequence on close price. The model that we created has the following code:</p>
+
+```python
+model_many_to_many = Sequential()
+model_many_to_many.add(LSTM(30, activation='relu', input_shape=(n_steps_in, n_features)))
+model_many_to_many.add(RepeatVector(n_steps_out))
+model_many_to_many.add(Dropout(0.2))
+model_many_to_many.add(Dense(25))
+model_many_to_many.add(Dense(1))
+model_many_to_many.compile(optimizer='adam', loss='mse')
+```
+
+### Alkaliod (ALK)
+<p>For Alkaloid training was finished in 2 epoch with smooth in both loss train and validation. Train RMSE for ALK is: 226.83 MKD and Validation RMSE for ALK is: 411.21 MKD. On the image bellow we can check loss while model was trained.</p>
+
+<p align="center">
+ <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/alkaloid_loss_rnn.png"><img width="70%" height="70%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/alkaloid_loss_rnn.png"></a>
+</p>
+
+<p>Other mesure that we add was test set and how much loss we get. RMSE on 7th day for ALK was 233.69 MKD or on the image bellow we can check sequence of 7 days with actual and predicted prices on test set.</p>
+
+<p align="center">
+ <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/alk_rnn_actual_predicted.png"><img width="70%" height="70%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/alk_rnn_actual_predicted.png"></a>
+</p>
+
+### Graint (GRNT)
+
+### Komercijalna Banka (KMB)
+
+### Makpetrol (MPT)
 
 ## Conclusions and recommendations
 
