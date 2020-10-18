@@ -132,14 +132,16 @@ model_many_to_many.compile(optimizer='adam', loss='mse')
 <p>For Alkaloid training was finished in 2 epoch with smooth in both loss train and validation. Train RMSE for ALK is: 226.83 MKD and Validation RMSE for ALK is: 411.21 MKD. On the image bellow we can check loss while model was trained.</p>
 
 <p align="center">
- <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/alkaloid_loss_rnn.png"><img width="70%" height="70%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/alkaloid_loss_rnn.png"></a>
+ <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/alkaloid_loss_rnn.png"><img width="40%" height="40%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/alkaloid_loss_rnn.png"></a>
 </p>
 
 <p>Other mesure that we add was test set and how much loss we get. RMSE on 7th day for ALK was 233.69 MKD or on the image bellow we can check sequence of 7 days with actual and predicted prices on test set.</p>
 
 <p align="center">
- <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/alk_rnn_actual_predicted.png"><img width="30%" height="30%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/alk_rnn_actual_predicted.png"></a>
+ <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/alk_rnn_actual_predicted.png"><img width="40%" height="40%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/alk_rnn_actual_predicted.png"></a>
 </p>
+
+<p>On the end we try to predict the price on 2020-09-01. The price for ALK after 7 days will be will be 12151.0 which make a difference od incredibly less 49 MKD. The actual price is 12200.0</p>
 
 ### Graint (GRNT)
 
