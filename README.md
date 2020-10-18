@@ -66,7 +66,7 @@ On the end we finished with 12 features of which last column start_date give us 
 
 ## Models implementation
 
-<h3>### using regressors</h3>
+<h3>using regressors</h3>
 
 <p>In order to be able to discuss the models and their loss first must be completed, the data processing, reprocessing, cleaning and data analysis. To make better results we compare some techniques and here we present the best of them.
 Before we build and train models we make feature engineering task and split the data into train and test but also we shift the label column by 7 days so we can find the price after 7 days. Label column will be close price.
@@ -75,7 +75,7 @@ We used two ensamble regreossor and one RNN model with LSTM. If we talking about
 
 ### Alkaloid (ALK)
 
-<p>After spliting the dataset by each stock, and also split on training and validation set we calculate the loss by root mean squared error. On training set we get RMSE with 6.9 and RMSE on validation set with 38.79. Other parametar that we mesure was coefficient of determination and on train we get 0.99 but on validation we get 0.89. It is obvious that when you predicting price with lots of uncertainty there will be some difference between traning and validation mesures</p>
+<p>After spliting the dataset by each stock, and also split on training and validation set we calculate the loss by root mean squared error. On training set we get RMSE with 6.9 and RMSE on validation set with 38.79. Other parametar that we mesure was coefficient of determination and on train we get 0.99 but on validation we get 0.89. It is obvious that when you predicting price with lots of uncertainty there will be some difference between traning and validation mesures. With XGBoost 0.15 RMSE on training set and 28.43 RMSE on validation set. R^2 on training set was 0.99 and on validation set 0.94.</p>
 
 <p align="center">
  <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/alkaloid_regoressor.PNG"><img width="70%" height="70%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/alkaloid_regoressor.PNG"></a>
@@ -85,17 +85,36 @@ We used two ensamble regreossor and one RNN model with LSTM. If we talking about
 
 ### Granit (GRNT)
 
-<p></p>
+<p>On training set for Granit Stock we get RMSE with 1.95 and RMSE on validation set with 1.38. Other parametar that we mesure was coefficient of determination and on train we get 0.99 but on validation we get 0.94. This calculation is done with Random Forest. Calculation with XGBoost was little bit worse.</p>
+
+<p align="center">
+ <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/granit_regoressor.PNG"><img width="70%" height="70%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/granit_regoressor.PNG"></a>
+</p>
+
+<p>In this case when we compare on training and validation we can conclude that Random Forest give us better results than XGBoost. Forcast for 7th day or on 2020-09-01 with Random Forest is 950.0 and with XGBoost is 952.0. After a while the real price was 975.0 so XGBoost get better predition with negative 23 MKD difference than actual.</p>
+
 
 ### Komercijalna Banka (KMB)
 
-<p></p>
+<p>On training set for Granit Stock we get RMSE with 9.30 and RMSE on validation set with 10.69. Other parametar that we mesure was coefficient of determination and on train we get 0.99 but on validation we get 0.91. This calculation is done with Random Forest. Calculation with XGBoost was better on traning set but little bit worse on validation set.</p>
+
+<p align="center">
+ <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/kmb_regoressor.PNG"><img width="70%" height="70%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/kmb_regoressor.PNG"></a>
+</p>
+
+<p>In this case when we compare on training and validation we can conclude that Random Forest give us better results than XGBoost. Forcast for 7th day or on 2020-09-01 with Random Forest is 5891.0 and with XGBoost is 5886.0. After a while the real price was 6299.0 so Random FOrest get better predition with negative 408 MKD difference than actual.</p>
 
 ### Makpetrol (MPT)
 
-<p></p>
+<p>On training set for Granit Stock we get RMSE with 97.14 and RMSE on validation set with 119.34. Other parametar that we mesure was coefficient of determination and on train we get 0.99 but on validation we get 0.97. This calculation is done with Random Forest. Calculation with XGBoost was better on traning set but little bit worse on validation set.</p>
 
-<h3>### using RNN with LSTM</h3>
+<p align="center">
+ <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/makpetrol_regoressor.PNG"><img width="70%" height="70%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/makpetrol_regoressor.PNG"></a>
+</p>
+
+<p>In this case when we compare on training and validation we can conclude that Random Forest give us better results than XGBoost. Forcast for 7th day or on 2020-09-01 with Random Forest is 64382.0 and with XGBoost is 64705.0. After a while the real price was 62500.0 so Random Forest get better predition with 2205.0 MKD grater than actual.</p>
+
+<h3>using RNN with LSTM</h3>
 
 ## Conclusions and recommendations
 
