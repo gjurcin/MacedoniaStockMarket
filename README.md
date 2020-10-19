@@ -54,9 +54,24 @@ On the end we finished with 12 features of which last column start_date give us 
 <p>Right of the bat, time-series daata is not yout average dataset. In all other datasets, the common thing is that all features, in general, are independent of each other. What sets time-series apart from regular, there is some inherent ordering to the data.</p>
 <p>After loading the preprocessd dataset, we started to extract all possible feature from Timestamp column. Date column is already converted to datetime64[ns] type. Though, within extraction we found 14 new features. On the image bellow you can check the code of extraction.</p>
 
-<img width="50%" height="50%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/date_fe.PNG"></a></p>
+```python
+df_final['sale_year'] = df_final.date.dt.year
+df_final['sale_month'] = df_final.date.dt.month
+df_final['sale_week'] = df_final.date.dt.week
+df_final['sale_day'] = df_final.date.dt.day
+df_final['sale_dayofweek'] = df_final.date.dt.dayofweek
+df_final['sale_dayofyear'] = df_final.date.dt.dayofyear
+df_final['is_month_end'] = df_final.date.dt.is_month_end
+df_final['is_month_start'] = df_final.date.dt.is_month_start
+df_final['is_quarter_end'] = df_final.date.dt.is_quarter_end
+df_final['is_quarter_start'] = df_final.date.dt.is_quarter_start
+df_final['is_year_end'] = df_final.date.dt.is_year_end
+df_final['is_year_start'] = df_final.date.dt.is_year_start
+df_final['days_in_month'] = df_final.date.dt.days_in_month
+df_final['is_leap_year'] = df_final.date.dt.is_leap_year
+```
 
-<h3>### Rolling windows</h3>
+<h3>Rolling windows</h3>
 
 <p>One of the most important proccess that we done is creating features with time lags or adding some explanation features to target value such as mean of the lasy 7 days of the close price. Before all we set the Date column as index. Moreover in the rolling windows process we added 31 explainable features. Though, on the sample of exploring for one of the stocks we found lots of insights, which feature explain the most of the model. On the image bellow you can check the order. Most of the rolling windows are made on prices open, average and close but also ratios to explain growth by time.</p>
 
@@ -81,7 +96,7 @@ We used two ensamble regreossor and one RNN model with LSTM. If we talking about
  <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/alkaloid_regoressor.PNG"><img width="70%" height="70%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/alkaloid_regoressor.PNG"></a>
 </p>
 
-<p>In this case when we compare on training and validation we can conclude that XGBosst give us better results than Randrom Forest. Forcast for 7th day or on 2020-09-01 with Random Forest is 11994.0 and with XGBoost is 11869.0. After a while the real price was 12200.0 so Random Forest get better predition with 206 MKD difference less than actual.</p>
+<p>In this case when we compare on training and validation we can conclude that XGBosst give us better results than Randrom Forest. Forcast for 7th day or on 2020-09-01 with Random Forest is 11994.0 and with XGBoost is 11869.0. After a while the real price was 12200.0 so Random Forest get better predition with 206 MKD difference less than actual.This make 0.02 error in predition.</p>
 
 ### Granit (GRNT)
 
@@ -91,7 +106,7 @@ We used two ensamble regreossor and one RNN model with LSTM. If we talking about
  <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/granit_regoressor.PNG"><img width="70%" height="70%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/granit_regoressor.PNG"></a>
 </p>
 
-<p>In this case when we compare on training and validation we can conclude that Random Forest give us better results than XGBoost. Forcast for 7th day or on 2020-09-01 with Random Forest is 950.0 and with XGBoost is 952.0. After a while the real price was 975.0 so XGBoost get better predition with negative 23 MKD difference than actual.</p>
+<p>In this case when we compare on training and validation we can conclude that Random Forest give us better results than XGBoost. Forcast for 7th day or on 2020-09-01 with Random Forest is 950.0 and with XGBoost is 952.0. After a while the real price was 975.0 so XGBoost get better predition with negative 23 MKD difference than actual. This make 0.02 error in predition.</p>
 
 
 ### Komercijalna Banka (KMB)
@@ -102,7 +117,7 @@ We used two ensamble regreossor and one RNN model with LSTM. If we talking about
  <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/kmb_regoressor.PNG"><img width="70%" height="70%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/kmb_regoressor.PNG"></a>
 </p>
 
-<p>In this case when we compare on training and validation we can conclude that Random Forest give us better results than XGBoost. Forcast for 7th day or on 2020-09-01 with Random Forest is 5891.0 and with XGBoost is 5886.0. After a while the real price was 6299.0 so Random FOrest get better predition with negative 408 MKD difference than actual.</p>
+<p>In this case when we compare on training and validation we can conclude that Random Forest give us better results than XGBoost. Forcast for 7th day or on 2020-09-01 with Random Forest is 5891.0 and with XGBoost is 5886.0. After a while the real price was 6299.0 so Random FOrest get better predition with negative 408 MKD difference than actual. This make 0.06 error in predition.</p>
 
 ### Makpetrol (MPT)
 
@@ -112,7 +127,7 @@ We used two ensamble regreossor and one RNN model with LSTM. If we talking about
  <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/makpetrol_regoressor.PNG"><img width="70%" height="70%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/makpetrol_regoressor.PNG"></a>
 </p>
 
-<p>In this case when we compare on training and validation we can conclude that Random Forest give us better results than XGBoost. Forcast for 7th day or on 2020-09-01 with Random Forest is 64382.0 and with XGBoost is 64705.0. After a while the real price was 62500.0 so Random Forest get better predition with 2205.0 MKD grater than actual.</p>
+<p>In this case when we compare on training and validation we can conclude that Random Forest give us better results than XGBoost. Forcast for 7th day or on 2020-09-01 with Random Forest is 64382.0 and with XGBoost is 64705.0. After a while the real price was 62500.0 so Random Forest get better predition with 2205.0 MKD grater than actual. This make 0.04 error in predition.</p>
 
 <h3>using RNN with LSTM</h3>
 
@@ -141,13 +156,55 @@ model_many_to_many.compile(optimizer='adam', loss='mse')
  <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/alk_rnn_actual_predicted.png"><img width="40%" height="40%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/alk_rnn_actual_predicted.png"></a>
 </p>
 
-<p>On the end we try to predict the price on 2020-09-01. The price for ALK after 7 days will be will be 12151.0 which make a difference od incredibly less 49 MKD. The actual price is 12200.0</p>
+<p>On the end we try to predict the price on 2020-09-01. The price for ALK after 7 days will be will be 12151.0 which make a difference of incredibly less 49 MKD. The actual price is 12200.0 which makes 0.004 error in prediction.</p>
 
 ### Graint (GRNT)
 
+<p>For Graint training was finished in 4 epoch with smooth in both loss train and validation. Train RMSE for GRNT is: 40.44 MKD and Validation RMSE for GRNT is: 8.26 MKD. On the image bellow we can check loss while model was trained.</p>
+
+<p align="center">
+ <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/granit_loss_rnn.png"><img width="40%" height="40%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/granit_loss_rnn.png"></a>
+</p>
+
+<p>Other mesure that we add was test set and how much loss we get. RMSE on 7th day for GRNT is: 4.82 MKD or on the image bellow we can check sequence of 7 days with actual and predicted prices on test set.</p>
+
+<p align="center">
+ <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/grnt_rnn_actual_predicted.png"><img width="40%" height="40%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/grnt_rnn_actual_predicted.png"></a>
+</p>
+
+<p>On the end we try to predict the price on 2020-09-01. The price for GRNT after 7 days will be will be 949.0 which make a difference of negative 26 MKD. The actual price is 975.0 which makes 0.03 error in prediction.</p>
+
 ### Komercijalna Banka (KMB)
 
+<p>About Komercijalna Banka training was finished in 3 epoch with smooth in both loss train and validation. Train RMSE for KMB is: 248.51 MKD and Validation RMSE for KMB is: 117.63 MKD. On the image bellow we can check loss while model was trained.</p>
+
+<p align="center">
+ <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/komercijalna_loss_rnn.png"><img width="40%" height="40%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/komercijalna_loss_rnn.png"></a>
+</p>
+
+<p>Other mesure that we add was test set and how much loss we get. RMSE on 7th day for KMB is: 110.08 MKD or on the image bellow we can check sequence of 7 days with actual and predicted prices on test set.</p>
+
+<p align="center">
+ <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/kmb_rnn_actual_predicted.png"><img width="40%" height="40%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/kmb_rnn_actual_predicted.png"></a>
+</p>
+
+<p>On the end we try to predict the price on 2020-09-01. The price for KMB after 7 days will be will be 6252.0 which make a difference of incredibly 47 MKD less. The actual price is 6299.0 which makes 0.007 error in prediction.</p>
+
 ### Makpetrol (MPT)
+
+<p>About Makpetrol training was finished in 2 epoch with smooth in both loss train and validation. Train RMSE for MPT is: 2150.37 MKD and Validation RMSE for MPT is: 832.82 MKD. On the image bellow we can check loss while model was trained.</p>
+
+<p align="center">
+ <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/makpetrol_loss_rnn.png"><img width="40%" height="40%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/makpetrol_loss_rnn.png"></a>
+</p>
+
+<p>Other mesure that we add was test set and how much loss we get. RMSE on 7th day for MPT is: 258.32 MKD or on the image bellow we can check sequence of 7 days with actual and predicted prices on test set.</p>
+
+<p align="center">
+ <a href="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/mpt_rnn_actual_predicted.png"><img width="40%" height="40%" src="https://github.com/gjurcin/MacedoniaStockMarket/blob/master/images/mpt_rnn_actual_predicted.png"></a>
+</p>
+
+<p>On the end we try to predict the price on 2020-09-01. The price for KMB after 7 days will be will be 61660.0 which make a difference of incredibly 840 MKD less. The actual price is 62500.0 which makes 0.013 error in prediction.</p>
 
 ## Conclusions and recommendations
 
