@@ -209,9 +209,11 @@ model_many_to_many.compile(optimizer='adam', loss='mse')
 
 ## Conclusions and recommendations
 
-<p>As an overview of the algorithms that we used for this project all of them gave us very good results. Regressors like Random Forest and XGBoost get to the point where we can explain the forecast with creating features like ratios, time lags or some deviation through the time. Like this we understand which feature is most important about the forecast. Moreover we can see that quantity did not reflect a lot in the result by predicting the price.
-On the other hand using RNN gave us flexibility to lookback in the past. After crating the model with LSTM they show their power and gave us much better results than regressors. Approximate error for seven days prediction was almost 1% which is incredible. We must mention here that in RNN with LSTM we used many to many model or sequence to sequence with 180 inputs and 7 outputs. This mean we predicted 7 days in a row but use only the last day.
-As a recommendation from experience that we gain through this time-series project RNN with LSTM are much more powerful than regular regressors.</p>
+<p>As an overview of the algorithms that we used for this project all of them gave us very good results. Regressors like Random Forest and XGBoost get to the point where we can explain the forecast with creating features like ratios, time lags or some deviation through the time. Like this we understand which feature is most important about the forecast. Moreover we can see that quantity did not reflect a lot in the result by predicting the price.</p>
+
+<p>On the other hand using RNN gave us flexibility to lookback in the past. After crating the model with LSTM they show their power and gave us much better results than regressors. Approximate error for seven days prediction was almost 1% which is incredible. We must mention here that in RNN with LSTM we used many to many model or sequence to sequence with 180 inputs and 7 outputs. This mean we predicted 7 days in a row but use only the last day.</p>
+
+<p>As a recommendation from experience that we gain through this time-series project RNN with LSTM are much more powerful than regular regressors.</p>
   
 </body>
 </html>
